@@ -1,10 +1,10 @@
 # secrets
 em_token.txt
-.env
- 
-# downloaded data (re-created by get_data.py)
-# data/
+.en
  
 # python
 __pycache__/
 .ipynb_checkpoints/
+
+# get_data first verison
+get_data.ipynb
