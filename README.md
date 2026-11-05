@@ -6,7 +6,7 @@ Hourly data for 2024, price areas DK1 (West Denmark) and DK2 (East Denmark), fro
 
 ## Key findings
 
-1. **Cheap is rarely clean.** On about 9 days in 10, the cheapest 4-hour window of the day is not the cleanest one (it is the same window on 11% of days in both areas).
+1. **Cheap is rarely clean.** On about 9 days in 10, the cheapest 4-hour window of the day is not the cleanest one (same window on 11% of days in both areas). The two windows share at least one hour on about a third of days (30% DK1, 34% DK2), but the cheapest window is within 5% of the cleanest window's CO2 on only 17% of days in DK1 and 31% in DK2.
 2. **The gap is seasonal.** In winter the cheapest window is only slightly dirtier than the cleanest (median day: DK1 +24 g/kWh, DK2 +4 g/kWh). In summer the gap is large (DK1 +49 g/kWh, DK2 +23 g/kWh): at 14:00 the price is at its lowest and CO2 intensity at its highest.
 3. **Why:** on summer nights Denmark imports Nordic hydro power. At summer midday cheap German and Dutch solar pushes Nordic imports out, and Denmark imports from Germany and the Netherlands, whose mix is more carbon-intensive.
 4. **EV charging (10 kWh per night):** charging in the cheapest hour instead of at plug-in saves ~165-180 EUR/year. In DK1 it also cuts CO2 by ~7%; in DK2 it cuts no CO2 at all.
@@ -55,7 +55,8 @@ Hourly data for 2024, price areas DK1 (West Denmark) and DK2 (East Denmark), fro
 - **Average, not marginal, CO2 intensity.** "Avoided" CO2 is the average mix of the hour you charge in, not the change in emissions caused by shifting load. A marginal-emissions view could give a different answer.
 - **Day-ahead price only.** Household bills add grid tariffs (with an evening peak), taxes and VAT. Including them would raise the cost of charging at plug-in.
 - **CO2Emis is a real-time estimate**; Energinet states that errors are generally not corrected. Combined heat and power emissions are split with the 125% method.
-- **Import emissions:** the import explanation depends on how CO2Emis assigns emissions to imported power, which I have not yet verified in Energinet's documentation. The same holds for the sign convention of the exchange columns (assumed: positive = import).
+- **Import emissions:** the import explanation depends on how CO2Emis assigns emissions to imported power, which I have not verified in Energinet's documentation.
+- **Exchange sign:** positive = import. Energinet's [data catalog](https://www.energidataservice.dk/Data_catalog_EN.pdf) states that consumption is calculated as production + exchange, so a positive exchange adds to Danish consumption.
 - **One EV, best case.** Picking the single best hour each night is the best case for flexibility; larger loads spread over more hours would narrow the gaps.
 - **One year.** 2024 only; "winter" combines Jan-Feb 2024 and Dec 2024.
 - Electricity Maps' historical data is not available on the free tier, so this uses Energinet's CO2Emis. A natural next step is to compare with flow-traced intensity.
@@ -66,7 +67,7 @@ Hourly data for 2024, price areas DK1 (West Denmark) and DK2 (East Denmark), fro
 |---|---|
 | `01_get_data.ipynb` | Downloads the three datasets from the Energi Data Service API and merges them |
 | `02_exploration.ipynb` | Exploration: correlations, DK1 vs DK2, negative prices, seasonal patterns, imports |
-| `03_felxibility.ipynb` | Daily window metric, EV charging simulation, sensitivity check, charts |
+| `03_flexibility.ipynb` | Daily window metric, EV charging simulation, sensitivity check, charts |
 | `data/` | Cached raw downloads and `merged.csv` (one row per hour per area) |
 | `figures/` | Charts used above |
 
